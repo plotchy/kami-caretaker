@@ -155,10 +155,13 @@ const KamiCard: React.FC<KamiCardComponentProps> = ({ kami, index, updateKami, d
       {!isValidHex && (
         <p className="mt-1 text-sm text-red-500">
           Must be a 64 character hex string starting with 0x<br></br>
-          <Link href="/faq#digital-code">
+          {/* <Link href="/faq#digital-code">
             <a className="underline hover:text-red-400">
               Learn how to get the Digital Code
             </a>
+          </Link> */}
+          <Link href="/faq#digital-code" className="underline hover:text-red-400">
+              Learn how to get the Digital Code
           </Link>
         </p>
       )}

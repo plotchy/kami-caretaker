@@ -33,10 +33,13 @@ const FAQPage: React.FC = () => {
       {
           <header className="container mx-auto flex justify-end items-center mb-8">
             <div className="flex gap-1">
-              <Link href="/">
+              {/* <Link href="/">
                 <a className="text-sm bg-blue-100 hover:bg-blue-200 text-blue-700 hover:text-blue-800 py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
                   Home 🏠
                 </a>
+              </Link> */}
+              <Link href="/" className="text-sm bg-blue-100 hover:bg-blue-200 text-blue-700 hover:text-blue-800 py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
+                  Home 🏠
               </Link>
             </div>
           </header>

@@ -271,10 +271,13 @@ export default function DashboardPage() {
           <header className="">
             <div className="container mx-auto flex justify-end items-center">
               <div className="flex gap-4">
-                <Link href="/faq">
+                {/* <Link href="/faq">
                   <a className="text-sm bg-purple-100 hover:bg-purple-200 text-purple-700 hover:text-purple-800 py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
                     Read FAQ 📖
                   </a>
+                </Link> */}
+                <Link href="/faq" className="text-sm bg-purple-100 hover:bg-purple-200 text-purple-700 hover:text-purple-800 py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
+                    Read FAQ 📖
                 </Link>
                 <button
                   onClick={logout}
