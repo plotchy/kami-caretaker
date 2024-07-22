@@ -1,6 +1,19 @@
 import React, { useState, useEffect } from 'react';
 
-const PlayerPane = ({ playerWallet, operator, kamis, ghostGumsUsed, setGhostGumsUsed }) => {
+type Kami = {
+  interval: number;
+  isRunning: boolean;
+};
+
+type PlayerPaneProps = {
+  playerWallet: string;
+  operator: string;
+  kamis: Kami[];
+  ghostGumsUsed: number;
+  setGhostGumsUsed: (value: number) => void;
+};
+
+const PlayerPane: React.FC<PlayerPaneProps> = ({ playerWallet, operator, kamis, ghostGumsUsed, setGhostGumsUsed }) => {
   const [estimatedUsage, setEstimatedUsage] = useState(0);
   const [ghostGums, setGhostGums] = useState(0);
 

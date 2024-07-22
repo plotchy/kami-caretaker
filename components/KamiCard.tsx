@@ -1,6 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-const KamiCard = ({ kami, index, updateKami, deleteKami, toggleKamiTimer, resetKamiTimer, testHealKami }) => {
+
+type Kami = {
+  name: string;
+  nickname: string;
+  interval: number;
+  timeLeft: number;
+  isRunning: boolean;
+};
+
+type KamiCardComponentProps = {
+  kami: Kami;
+  index: number;
+  updateKami: (index: number, key: string, value: any) => void;
+  deleteKami: (index: number) => void;
+  toggleKamiTimer: (index: number) => void;
+  resetKamiTimer: (index: number) => void;
+  testHealKami: (index: number) => void;
+};
+
+const KamiCard: React.FC<KamiCardComponentProps> = ({ kami, index, updateKami, deleteKami, toggleKamiTimer, resetKamiTimer, testHealKami }) => {
   const [showBanishConfirmation, setShowBanishConfirmation] = useState(false);
   const [showHealConfirmation, setShowHealConfirmation] = useState(false);
   const [isValidHex, setIsValidHex] = useState(true);

@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import Link from 'next/link';
 import Head from "next/head";
-import Image from 'next/future/image'
+import Image from 'next/image';
 
-const FAQPage = () => {
-  const [inputCode, setInputCode] = useState('');
-  const [outputCode, setOutputCode] = useState('');
-  const [isClient, setIsClient] = useState(false);
+const FAQPage: React.FC = () => {
+  const [inputCode, setInputCode] = useState<string>('');
+  const [outputCode, setOutputCode] = useState<string>('');
+  const [isClient, setIsClient] = useState<boolean>(false);
+
   useEffect(() => {
     setIsClient(true);
   }, []);
-  const handleInputChange = (e) => {
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputCode(e.target.value);
   };
 
@@ -22,9 +24,6 @@ const FAQPage = () => {
       setOutputCode('Input is too short');
     }
   };
-
-
-
 
   return (
     <>
