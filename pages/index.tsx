@@ -29,27 +29,70 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   }
 };
 
+// export default function LoginPage() {
+//   const { login } = usePrivy();
+
+//   return (
+//     <>
+//       <Head>
+//         <title>Login · Privy</title>
+//       </Head>
+
+//       <main className="flex min-h-screen min-w-full">
+//         <div className="flex bg-privy-light-blue flex-1 p-6 justify-center items-center">
+//           <div>
+//             <div>
+//               <Portal style={{ maxWidth: "100%", height: "auto" }} />
+//             </div>
+//             <div className="mt-6 flex justify-center text-center">
+//               <button
+//                 className="bg-blue-600 hover:bg-blue-700 py-3 px-6 text-white rounded-lg"
+//                 onClick={login}
+//               >
+//                 Log in
+//               </button>
+//             </div>
+//           </div>
+//         </div>
+//       </main>
+//     </>
+//   );
+// }
+
 export default function LoginPage() {
   const { login } = usePrivy();
 
   return (
     <>
       <Head>
-        <title>Login · Privy</title>
+        <title>Login · Kami Caretaker</title>
       </Head>
 
       <main className="flex min-h-screen min-w-full">
         <div className="flex bg-privy-light-blue flex-1 p-6 justify-center items-center">
-          <div>
+          <div className="text-center">
             <div>
               <Portal style={{ maxWidth: "100%", height: "auto" }} />
             </div>
-            <div className="mt-6 flex justify-center text-center">
+            <h1 className="text-3xl font-bold mt-8 mb-4 text-purple-400">🧑‍🌾 Kami Caretaker ⛑️</h1>
+            <h1 className="text-3xl font-bold mt-8 mb-4 text-purple-400">Welcome!</h1>
+            <p className="text-lg mb-6 max-w-md mx-auto text-purple-400">
+              Log in to access your personal Kami dashboard. Here you can manage and automate the healing of your Kamis while you're away.
+            </p>
+            <div className="mb-6">
+              <h2 className="text-xl font-semibold mb-2 text-purple-400">Why Sign In?</h2>
+              <ul className="list-disc list-inside text-left max-w-md mx-auto text-purple-400">
+                <li>Set up automated healing schedules for your Kamis</li>
+                <li>Automatically feed your Kamis in the background</li>
+                <li>Use your wallet as you would for kamigotchi</li>
+              </ul>
+            </div>
+            <div className="mt-6 flex justify-center">
               <button
-                className="bg-violet-600 hover:bg-violet-700 py-3 px-6 text-white rounded-lg"
+                className="bg-blue-600 hover:bg-blue-700 py-3 px-6 text-white rounded-lg transition duration-300 ease-in-out transform hover:scale-105"
                 onClick={login}
               >
-                Log in
+                Sign in
               </button>
             </div>
           </div>

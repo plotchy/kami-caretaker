@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  /* normal */
   @font-face {
     font-family: "Adelle Sans";
     src: url("/fonts/AdelleSans-Regular.woff2") format("woff2");
@@ -12,7 +11,6 @@
     font-weight: 300;
   }
 
-  /* semibold */
   @font-face {
     font-family: "Adelle Sans";
     src: url("/fonts/AdelleSans-Semibold.woff2") format("woff2");
@@ -20,4 +18,40 @@
     font-display: swap;
     font-weight: 600;
   }
+}
+
+
+:root {
+  --bg-color: #070b34;
+  --bg2-color: #0f0f23;
+  --text-color: #e0e0e0;
+  --accent-color: #16213e;
+  /* --bg-color: #0f0f23;
+  --text-color: #e0e0e0;
+  --accent-color: #16213e; */
+  --highlight-color: #0f3460;
+  --border-color: #e94560;
+  --crit-health-color: #ff4136;
+  --low-health-color:#ffa200;
+  --mid-health-color: #ffdc00;
+  --high-health-color: #2ecc40;
+}
+
+body {
+  background-color: var(--bg2-color);
+  color: var(--text-color);
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+  margin: 0;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: 
+    url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAABoAgMAAABgcl0yAAAACVBMVEUAAAAAgP8OCw17W9ffAAAAA3RSTlMA//9EUNYhAAAAn0lEQVR4nO2SsRXDIAxEccEIeJ6MkCKn96BXYeaJsoGLeMoEuz1RpYt++x/cIZFSEATBYIGrMu6eKu+Hp0Ts5kRVqHNsUTTwY3kDdl6k7EDjN4oBMKfFF2VhWYeqLKyM+yAsbEU3NHuyFjCFKutRL6U/VP11NGNKcMJqrJdi5SdPngxqMt5zKUKXkkoHNr7KjH54P3FkcTMcLREEwR/yAfqlPhsb7uEoAAAAAElFTkSuQmCC'),
+    url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAABoAgMAAABgcl0yAAAACVBMVEUAAAAMsFMOCw2qBQmfAAAAA3RSTlMA//9EUNYhAAAAn0lEQVR4nO2SsRXDIAxEccEIeJ6MkCKn96BXYeaJsoGLeMoEuz1RpYt++x/cIZFSEATBYIGrMu6eKu+Hp0Ts5kRVqHNsUTTwY3kDdl6k7EDjN4oBMKfFF2VhWYeqLKyM+yAsbEU3NHuyFjCFKutRL6U/VP11NGNKcMJqrJdi5SdPngxqMt5zKUKXkkoHNr7KjH54P3FkcTMcLREEwR/yAfqlPhsb7uEoAAAAAElFTkSuQmCC');
+  background-position: 
+    0px 0px,
+    50px 50px;
+  background-size: 100px 100px, 100px 100px;
 }
