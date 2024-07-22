@@ -1,4 +1,4 @@
-# Kami Caretaker
+# 🧑‍🌾 Kami Caretaker ⛑️
 
 This site helps you heal up your Kamis while you're away. You can add your kamis and set timers to feed them, and this site will automatically feed them for you.
 
