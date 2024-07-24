@@ -4,6 +4,7 @@ import { PrivyClient, AuthTokenClaims } from "@privy-io/server-auth";
 
 const PRIVY_APP_ID = process.env.NEXT_PUBLIC_PRIVY_APP_ID;
 const PRIVY_APP_SECRET = process.env.PRIVY_APP_SECRET;
+const PRIVY_CLIENT_ID = process.env.PRIVY_CLIENT_ID;
 const client = new PrivyClient(PRIVY_APP_ID!, PRIVY_APP_SECRET!);
 
 export type AuthenticateSuccessResponse = {

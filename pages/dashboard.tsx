@@ -192,6 +192,14 @@ export default function DashboardPage() {
   const healKami = useCallback(async (index) => {
     console.log(`Healing Kami: ${kamis[index].nickname}`);
     
+    // Verify and refresh the token
+    const tokenResult = await refreshToken();
+    if (!tokenResult) {
+      console.error('Failed to refresh token. Aborting heal attempt.');
+      return;
+    }
+    console.log(`heal has refreshed token`);
+  
     let kami_id = kamis[index].name.replace(/^0x/, '');
     kami_id = kami_id.padStart(64, '0');
     
@@ -208,6 +216,8 @@ export default function DashboardPage() {
   
     while (retries < MAX_HEAL_RETRIES && !success) {
       try {
+        console.log(`attempting to heal ${kamis[index].nickname}`);
+
         const txHash = await sendTransaction(transactionRequest);
         console.log(`Transaction sent: ${txHash}`);
         
@@ -228,9 +238,16 @@ export default function DashboardPage() {
         retries++;
         
         if (retries < MAX_HEAL_RETRIES) {
-          const delay = INITIAL_RETRY_DELAY * Math.pow(2, retries - 1); // Exponential backoff
+          const delay = INITIAL_RETRY_DELAY * Math.pow(2, retries - 1);
           console.log(`Retrying in ${delay / 1000} seconds...`);
           await new Promise(resolve => setTimeout(resolve, delay));
+          
+          // Refresh token before retrying
+          const refreshResult = await refreshToken();
+          if (!refreshResult) {
+            console.error('Failed to refresh token. Aborting heal retry.');
+            break;
+          }
         } else {
           const timestamp = new Date().toLocaleString();
           let message = "Unknown error";
@@ -253,7 +270,7 @@ export default function DashboardPage() {
     if (!success) {
       console.error(`Failed to heal ${kamis[index].nickname} after ${MAX_HEAL_RETRIES} attempts.`);
     }
-  }, [kamis, operator, sendTransaction, setGhostGumsUsed]);
+  }, [kamis, operator, sendTransaction, setGhostGumsUsed, refreshToken]);
 
   useEffect(() => {
     return () => {
