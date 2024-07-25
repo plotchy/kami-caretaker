@@ -49,7 +49,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <PrivyProvider
         appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID || ''}
-        clientId={process.env.NEXT_PUBLIC_PRIVY_KAMIHEALER_CLIENT_ID}
+        clientId={process.env.NEXT_PUBLIC_PRIVY_KAMICARETAKER_CLIENT_ID}
         onSuccess={() => router.push('/dashboard')}
         config={privyConfig}
       >
