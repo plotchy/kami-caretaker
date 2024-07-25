@@ -1,13 +1,14 @@
 import '../styles/globals.css';
-import type {AppProps} from 'next/app';
+import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import {PrivyProvider} from '@privy-io/react-auth';
-import {useRouter} from 'next/router';
+import { PrivyProvider } from '@privy-io/react-auth';
+import { useRouter } from 'next/router';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function MyApp({Component, pageProps}: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
+
   const privyConfig = {
     supportedChains: [
       {
@@ -35,24 +36,20 @@ function MyApp({Component, pageProps}: AppProps) {
       noPromptOnSignature: true, // Added configuration
     },
   };
-
   return (
     <>
       <Head>
         <link rel="preload" href="/fonts/AdelleSans-Regular.woff2" as="font" crossOrigin="" />
         <link rel="preload" href="/fonts/AdelleSans-Semibold.woff2" as="font" crossOrigin="" />
 
-        {/* <link rel="icon" href="/favicons/favicon.ico" sizes="any" /> */}
         <link rel="icon" href="/favicons/kami-caretaker.svg" type="image/svg+xml" />
-        {/* <link rel="apple-touch-icon" href="/favicons/apple-touch-icon.png" /> */}
-        {/* <link rel="manifest" href="/favicons/manifest.json" /> */}
 
         <title>Kami Caretaker</title>
         <meta name="description" content="Kami Caretaker" />
       </Head>
       <PrivyProvider
         appId={process.env.NEXT_PUBLIC_PRIVY_APP_ID || ''}
-        clientId={process.env.PRIVY_CLIENT_ID || ''}
+        clientId={process.env.NEXT_PUBLIC_PRIVY_KAMIHEALER_CLIENT_ID}
         onSuccess={() => router.push('/dashboard')}
         config={privyConfig}
       >

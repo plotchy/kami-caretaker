@@ -1,8 +1,7 @@
 {
   "extends": [
     "@tsconfig/strictest/tsconfig",
-    "@tsconfig/node18/tsconfig",
-    "@tsconfig/next/tsconfig"
+    "@tsconfig/node18/tsconfig"
   ],
   "compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"],

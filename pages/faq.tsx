@@ -33,11 +33,6 @@ const FAQPage: React.FC = () => {
       {
           <header className="container mx-auto flex justify-end items-center mb-8">
             <div className="flex gap-1">
-              {/* <Link href="/">
-                <a className="text-sm bg-blue-100 hover:bg-blue-200 text-blue-700 hover:text-blue-800 py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
-                  Home 🏠
-                </a>
-              </Link> */}
               <Link href="/" className="text-sm bg-blue-100 hover:bg-blue-200 text-blue-700 hover:text-blue-800 py-2 px-4 rounded-full transition duration-300 ease-in-out transform hover:scale-105">
                   Home 🏠
               </Link>
@@ -89,13 +84,10 @@ const FAQPage: React.FC = () => {
               <ol className="list-decimal list-inside mt-4 space-y-3 text-gray-300">
                 <li className="pl-2">Feed one of your Kamis a Maple Ghost Gum 🍫</li>
                 <li className="pl-2">View the feeding transaction on the explorer</li>
-                {/* <img src="/images/viewFeedTx.png" alt="View Feed Transaction" className="w-full h-auto" /> */}
                 <Image src="/images/viewFeedTx.png" alt="View Feed Transaction" width={500} height={200} />
                 <li className="pl-2">Click on View Details of the transaction</li>
-                {/* <img src="/images/feedTx1.png" alt="Feed Transaction Details" className="w-full h-auto" /> */}
                 <Image src="/images/feedTx1.png" alt="Feed Transaction Details" width={500} height={400} />
                 <li className="pl-2">Copy the Raw Input field</li>
-                {/* <img src="/images/feedTx2.png" alt="Feed Transaction Input" className="w-full h-auto" /> */}
                 <Image src="/images/feedTx2.png" alt="Feed Transaction Input" width={500} height={240} />
                 <li className="pl-2">Put the raw input in the Digital Code Helper below</li>
               </ol>

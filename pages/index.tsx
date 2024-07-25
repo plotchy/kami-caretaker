@@ -8,11 +8,12 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const cookieAuthToken = req.cookies["privy-token"];
 
   // If no cookie is found, skip any further checks
-  if (!cookieAuthToken) return { props: {} };
+  if (!cookieAuthToken) {
+    return { props: {} };
+  }
 
   const PRIVY_APP_ID = process.env.NEXT_PUBLIC_PRIVY_APP_ID;
   const PRIVY_APP_SECRET = process.env.PRIVY_APP_SECRET;
-  const PRIVY_CLIENT_ID = process.env.PRIVY_CLIENT_ID;
   const client = new PrivyClient(PRIVY_APP_ID!, PRIVY_APP_SECRET!);
 
   try {
@@ -29,36 +30,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
     return { props: {} };
   }
 };
-
-// export default function LoginPage() {
-//   const { login } = usePrivy();
-
-//   return (
-//     <>
-//       <Head>
-//         <title>Login · Privy</title>
-//       </Head>
-
-//       <main className="flex min-h-screen min-w-full">
-//         <div className="flex bg-privy-light-blue flex-1 p-6 justify-center items-center">
-//           <div>
-//             <div>
-//               <Portal style={{ maxWidth: "100%", height: "auto" }} />
-//             </div>
-//             <div className="mt-6 flex justify-center text-center">
-//               <button
-//                 className="bg-blue-600 hover:bg-blue-700 py-3 px-6 text-white rounded-lg"
-//                 onClick={login}
-//               >
-//                 Log in
-//               </button>
-//             </div>
-//           </div>
-//         </div>
-//       </main>
-//     </>
-//   );
-// }
 
 export default function LoginPage() {
   const { login } = usePrivy();
