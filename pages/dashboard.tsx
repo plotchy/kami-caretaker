@@ -183,7 +183,8 @@ export default function DashboardPage() {
       to: '0xc5614ebc7C0F9d286ed8005CB1e5cb8334B45c4d',
       data: '0xe60f3a76' + kami_id + '0000000000000000000000000000000000000000000000000000000000000065',
       value: '0x0',
-      chainId: 5264468217
+      chainId: 5264468217,
+      type: 0,
     };
   
     let retries = 0;
