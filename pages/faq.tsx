@@ -7,6 +7,7 @@ const FAQPage: React.FC = () => {
   const [inputCode, setInputCode] = useState<string>('');
   const [outputCode, setOutputCode] = useState<string>('');
   const [isClient, setIsClient] = useState<boolean>(false);
+  const [expandedTab, setExpandedTab] = useState<string | null>(null);
 
   useEffect(() => {
     setIsClient(true);
@@ -23,6 +24,10 @@ const FAQPage: React.FC = () => {
     } else {
       setOutputCode('Input is too short');
     }
+  };
+
+  const toggleTab = (tab: string) => {
+    setExpandedTab(expandedTab === tab ? null : tab);
   };
 
   return (
@@ -59,20 +64,93 @@ const FAQPage: React.FC = () => {
 
           {/* */}
           <div>
-            <h2 className="text-3xl font-bold mb-4 text-blue-300" id="site-purpose">
+          <h2 className="text-3xl font-bold mb-4 text-blue-300" id="site-purpose">
               Tips for using this site
             </h2>
             <div className="text-lg text-gray-300 mb-4">
-              <p>This site relies on your computer to be:</p>
+              <p>To make sure this site works properly, your computer needs to be:</p>
               <ul className="list-disc list-inside mt-4 space-y-3 text-gray-300">
-                <li>🔋 On</li>
-                <li>🙇‍♂️ Awake</li>
+                <li>🔋 Turned on</li>
+                <li>🙇‍♂️ Awake (not in sleep mode)</li>
                 <li>📡 Connected to the internet</li>
+                <li>🏃 With this browser tab active</li>
               </ul>
-              <p>Plug in your computer and adjust display and power settings to prevent it from sleeping.</p>
+              <p>Keep your computer plugged in and adjust its settings to prevent it from going to sleep.</p>
+              <br></br>
+              <p>Also, keep this browser tab open and active. To help with this, you can stop Google Chrome from slowing down in the background:</p>
+              <div className="mt-4 space-y-4">
+                <h3 className="text-2xl font-semibold text-blue-300">How to Keep Google Chrome Active</h3>
+                <p>Follow these steps to open Google Chrome in a way that keeps it active, on Windows, macOS, and Linux.</p>
+                <div>
+                  <button onClick={() => toggleTab('windows')} className="text-xl font-semibold text-blue-300">
+                    Windows {expandedTab === 'windows' ? '▲' : '▼'}
+                  </button>
+                  {expandedTab === 'windows' && (
+                    <ol className="list-decimal list-inside space-y-2 pl-4">
+                      <li>Open Command Prompt:
+                        <ul className="list-disc list-inside pl-4">
+                          <li>Press <code className="bg-gray-100 text-pink-600 px-1 rounded">Win + R</code> to open the Run dialog.</li>
+                          <li>Type <code className="bg-gray-100 text-pink-600 px-1 rounded">cmd</code> and press <code className="bg-gray-100 text-pink-600 px-1 rounded">Enter</code> to open the Command Prompt.</li>
+                        </ul>
+                      </li>
+                      <li>Run the Command:
+                        <ul className="list-disc list-inside pl-4">
+                          <li>Copy and paste the following command into the Command Prompt:</li>
+                          <li><code className="bg-gray-100 text-pink-600 px-1 rounded">start chrome --disable-background-timer-throttling --new-window</code></li>
+                          <li>Press <code className="bg-gray-100 text-pink-600 px-1 rounded">Enter</code> to execute the command. This will open a new instance of Google Chrome with background timer throttling disabled.</li>
+                        </ul>
+                      </li>
+                    </ol>
+                  )}
+                </div>
+
+                <div>
+                  <button onClick={() => toggleTab('macos')} className="text-xl font-semibold text-blue-300">
+                    macOS {expandedTab === 'macos' ? '▲' : '▼'}
+                  </button>
+                  {expandedTab === 'macos' && (
+                    <ol className="list-decimal list-inside space-y-2 pl-4">
+                      <li>Open Terminal:
+                        <ul className="list-disc list-inside pl-4">
+                          <li>Open Spotlight by pressing <code className="bg-gray-100 text-pink-600 px-1 rounded">Cmd + Space</code>.</li>
+                          <li>Type <code className="bg-gray-100 text-pink-600 px-1 rounded">Terminal</code> and press <code className="bg-gray-100 text-pink-600 px-1 rounded">Enter</code> to open it.</li>
+                        </ul>
+                      </li>
+                      <li>Run the Command:
+                        <ul className="list-disc list-inside pl-4">
+                          <li>Type the following command in the Terminal:</li>
+                          <li><code className="bg-gray-100 text-pink-600 px-1 rounded">open -na "Google Chrome" --args --disable-background-timer-throttling</code></li>
+                          <li>Press <code className="bg-gray-100 text-pink-600 px-1 rounded">Enter</code> to execute the command. This opens a new instance of Google Chrome with the specified argument.</li>
+                        </ul>
+                      </li>
+                    </ol>
+                  )}
+                </div>
+
+                <div>
+                  <button onClick={() => toggleTab('linux')} className="text-xl font-semibold text-blue-300">
+                    Linux {expandedTab === 'linux' ? '▲' : '▼'}
+                  </button>
+                  {expandedTab === 'linux' && (
+                    <ol className="list-decimal list-inside space-y-2 pl-4">
+                      <li>Open Terminal:
+                        <ul className="list-disc list-inside pl-4">
+                          <li>Press <code className="bg-gray-100 text-pink-600 px-1 rounded">Ctrl + Alt + T</code> to open the Terminal, or search for "Terminal" in your application menu.</li>
+                        </ul>
+                      </li>
+                      <li>Run the Command:
+                        <ul className="list-disc list-inside pl-4">
+                          <li>Enter the following command in the Terminal:</li>
+                          <li><code className="bg-gray-100 text-pink-600 px-1 rounded">google-chrome --disable-background-timer-throttling --new-window</code></li>
+                          <li>Press <code className="bg-gray-100 text-pink-600 px-1 rounded">Enter</code> to execute the command. This will launch a new window of Google Chrome with background timer throttling disabled.</li>
+                        </ul>
+                      </li>
+                    </ol>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
-
           {/* */}
           <div>
             <h2 className="text-3xl font-bold mb-4 text-blue-300" id="digital-code">
