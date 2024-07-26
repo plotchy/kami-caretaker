@@ -17,6 +17,7 @@ export default function Layout({children, accountId, appName, navbarItems}: Prop
 
   useEffect(() => {
     if (ready && !authenticated) {
+      console.log('layout not authenticated, redirecting to /');
       router.push('/');
     }
   }, [ready, authenticated, router]);

@@ -36,7 +36,7 @@ export default function LoginPage() {
   const { login, ready, authenticated } = usePrivy();
 
   useEffect(() => {
-    console.log('Index Authentication state:', { ready, authenticated });
+    console.log('Index Authentication state:', { ready, authenticated, cookies: document.cookie });
   }, [ready, authenticated]);
 
   return (

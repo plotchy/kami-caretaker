@@ -37,11 +37,12 @@ export default function DashboardPage() {
   const timerRefs = useRef([]);
 
   useEffect(() => {
-    console.log('Dash Authentication state:', { ready, authenticated });
+    console.log('Dash Authentication state:', { ready, authenticated, cookies: document.cookie });
   }, [ready, authenticated]);
 
   useEffect(() => {
     if (ready && !authenticated) {
+      console.log('dash not authenticated, redirecting to /');
       router.push("/");
     } else if (ready && authenticated) {
       // Load kamis from localStorage
@@ -58,12 +59,6 @@ export default function DashboardPage() {
       localStorage.setItem('kamis', JSON.stringify(kamis));
     }
   }, [kamis]);
-
-  useEffect(() => {
-    if (ready && !authenticated) {
-      router.push("/");
-    }
-  }, [ready, authenticated, router]);
 
   const wallet = user?.wallet;
   const operator = wallet?.address;
