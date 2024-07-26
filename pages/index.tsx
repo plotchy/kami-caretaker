@@ -3,6 +3,7 @@ import { usePrivy } from "@privy-io/react-auth";
 import { PrivyClient } from "@privy-io/server-auth";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
+import { useEffect } from "react";
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const cookieAuthToken = req.cookies["privy-token"];
@@ -32,7 +33,11 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
 };
 
 export default function LoginPage() {
-  const { login } = usePrivy();
+  const { login, ready, authenticated } = usePrivy();
+
+  useEffect(() => {
+    console.log('Index Authentication state:', { ready, authenticated });
+  }, [ready, authenticated]);
 
   return (
     <>

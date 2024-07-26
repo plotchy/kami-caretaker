@@ -31,11 +31,14 @@ export default function DashboardPage() {
     authenticated,
     user,
     logout,
-    linkWallet,
     sendTransaction,
   } = usePrivy();
 
   const timerRefs = useRef([]);
+
+  useEffect(() => {
+    console.log('Dash Authentication state:', { ready, authenticated });
+  }, [ready, authenticated]);
 
   useEffect(() => {
     if (ready && !authenticated) {
