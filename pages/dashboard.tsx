@@ -5,8 +5,8 @@ import Head from "next/head";
 import KamiCard from "../components/KamiCard";
 import PlayerPane from "../components/PlayerPane";
 import Link from 'next/link';
-import FAQPage from './faq';
 import { toast } from 'react-toastify';
+import { useTitle } from 'react-use';
 
 async function verifyToken() {
   const url = "/api/verify";
@@ -21,10 +21,10 @@ async function verifyToken() {
 }
 
 export default function DashboardPage() {
-  const [botRunning, setBotRunning] = useState(false);
-  const [botStatus, setBotStatus] = useState('Stopped');
   const [kamis, setKamis] = useState([]);
   const [ghostGumsUsed, setGhostGumsUsed] = useState(0);
+  const [isTabVisible, setIsTabVisible] = useState(true);
+  const [originalTitle] = useState("Kami Caretaker");
   const router = useRouter();
   const {
     ready,
@@ -35,6 +35,22 @@ export default function DashboardPage() {
   } = usePrivy();
 
   const timerRefs = useRef([]);
+
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      setIsTabVisible(!document.hidden);
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
+
+
+  useTitle(isTabVisible ? originalTitle : "YOUR KAMIS ARE DYING!");
+
 
   useEffect(() => {
     console.log('Dash Authentication state:', { ready, authenticated, cookies: document.cookie });
@@ -240,8 +256,25 @@ export default function DashboardPage() {
   return (
     <>
       <Head>
-        <title>Kami Caretaker</title>
+        <title>{isTabVisible ? originalTitle : "YOUR KAMIS ARE DYING!"}</title>
       </Head>
+
+      <div className="sticky top-0 left-0 right-0 bg-yellow-100 border-b-2 border-yellow-300 p-4 text-center z-50">
+        <div className="flex items-center justify-center">
+          <svg className="w-6 h-6 text-yellow-700 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+          <span className="text-yellow-800 font-semibold">
+            Warning: This site only works while this tab is active and visible. Keep your pc awake and this tab open and visible to ensure your Kamis are cared for!
+          </span>
+        </div>
+      </div>
+
+      {!isTabVisible && (
+        <div className="fixed top-16 left-0 right-0 bg-red-500 text-white p-2 text-center z-50">
+          ⚠️ Alert: Your Kamis are not being healed while this tab is inactive! ⚠️
+        </div>
+      )}
 
         {ready && authenticated && (
           <header className="">
